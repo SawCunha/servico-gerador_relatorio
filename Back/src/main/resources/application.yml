@@ -3,10 +3,16 @@ server:
   servlet:
     context-path: /controlerelatorio
 
+application:
+  description: Projeto para realizar o controle e geração de relatorios
+  version: 0.0.1
+
 spring:
+  cache:
+    type: redis
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.2.106:5432/postgres
+    url: jdbc:postgresql://192.168.2.106:5432/ControleRelatorio
     username: postgres
     password: root
   jpa:
@@ -15,3 +21,16 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
+  redis:
+    url: redis://192.168.2.106
+    host: 192.168.2.106
+    port: 6379
+    expiretime: 60
+
+management:
+  security:
+    enabled: false
+
+jwt:
+  secret: usersecretforjwtauthenticateoratoroeuaroupadoreideromalalalameudeuscomoessabencaodechave
+  valid: 10 #Define em Minutos o tempo valido do Token

@@ -12,5 +12,5 @@ public interface ConfiguracaoSMTPMapper {
     ConfiguracaoSMTPDTO configuracaoToConfiguracaoDTO(ConfiguracaoSMTP configuracaoSMTP);
     List<ConfiguracaoSMTPDTO> configuracoesToConfiguracoesDTO(List<ConfiguracaoSMTP> configuracoesSMTP);
     ConfiguracaoSMTP configuracaoDTOToConfiguracao(ConfiguracaoSMTPDTO configuracaoSMTPDTO);
-    
+
 }
