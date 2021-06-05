@@ -10,9 +10,7 @@ import com.sawcunha.controlerelatorio.repository.UserRepository;
 import com.sawcunha.controlerelatorio.util.JwtTokenUtil;
 import io.fusionauth.jwt.domain.JWT;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

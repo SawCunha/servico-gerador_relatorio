@@ -3,7 +3,7 @@ package com.sawcunha.controlerelatorio.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "message_erro")
+@Table(name = "tb_message_erro")
 public class MessageErro {
 
     @Id
@@ -27,6 +27,12 @@ public class MessageErro {
         this.status = 418;
         this.message = "Realmente não foi possivel validar as coisas aqui";
         this.reason = "Não possui erros configurados nessa aplicação";
+    }
+
+    public MessageErro(Integer status, String message, String reason) {
+        this.status = status;
+        this.message = message;
+        this.reason = reason;
     }
 
     public Long getId() {

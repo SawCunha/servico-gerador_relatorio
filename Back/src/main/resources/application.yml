@@ -2,6 +2,7 @@ server:
   port: 8585
   servlet:
     context-path: /controlerelatorio
+  api_name: /api/v2
 
 application:
   description: Projeto para realizar o controle e geração de relatorios
@@ -26,6 +27,10 @@ spring:
     host: 192.168.2.106
     port: 6379
     expiretime: 60
+  boot:
+    admin:
+      client:
+        url: http://localhost:8585/controlerelatorio
 
 management:
   security:
@@ -33,4 +38,15 @@ management:
 
 jwt:
   secret: usersecretforjwtauthenticateoratoroeuaroupadoreideromalalalameudeuscomoessabencaodechave
-  valid: 10 #Define em Minutos o tempo valido do Token
+  valid: 60 #Define em Minutos o tempo valido do Token
+
+info:
+  app:
+    developer: SawCunha
+  java:
+    source: 11
+    target: 11
+
+access_denied:
+  reason: Você não possui permissão suficiente, favor contactar o administrador do sistema.
+  message: Acesso negado

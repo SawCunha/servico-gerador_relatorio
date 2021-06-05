@@ -6,6 +6,7 @@ import com.sawcunha.controlerelatorio.security.model.JwtValidation;
 import com.sawcunha.controlerelatorio.security.service.TokenAuthenticationService;
 import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.core.Authentication;
@@ -29,6 +30,9 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
     @Autowired
     private TokenAuthenticationService authenticationService;
 
+    @Value("${server.api_name}")
+    private String apiName;
+
     private final Gson gson = new Gson();
 
     @Override
@@ -39,13 +43,12 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
         HttpServletResponse response = (HttpServletResponse) res;
 
         AtomicReference<Authentication> authentication = new AtomicReference<>(null);
-        if(!request.getRequestURI().contains("/authentication")) {
+        if(request.getRequestURI().contains(apiName)) {
             JwtValidation jwtValidation = authenticationService
                     .getAuthentication(request);
 
             if (jwtValidation.isValid()) {
                 jwtValidation.getAuthenticationOptional().ifPresent(authentication::set);
-                request.setAttribute("AAA", "jwtValidation.getAaa()");
             } else {
                 setUnauthorizedResponse(response,jwtValidation.getJwtErro().getCod());
                 return;

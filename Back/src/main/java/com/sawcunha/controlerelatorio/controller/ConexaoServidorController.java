@@ -1,24 +1,19 @@
 package com.sawcunha.controlerelatorio.controller;
 
 import com.sawcunha.controlerelatorio.model.dto.ConexaoServidorDTO;
+import com.sawcunha.controlerelatorio.security.permission.AdminPermission;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
-
 @CrossOrigin
 @RestController
-@RequestMapping("/conexao_servidor")
+@RequestMapping("${server.api_name}/conexao_servidor")
 public class ConexaoServidorController {
 
-
+    @AdminPermission
     @GetMapping("/{id}")
-    private ResponseEntity<ConexaoServidorDTO> getConexaoByID(@PathVariable Long id, @RequestAttribute("AAA") String aaa){
-        System.out.println(aaa);
+    public ResponseEntity<ConexaoServidorDTO> getConexaoByID(@PathVariable Long id){
         System.out.println(id);
         return ResponseEntity.ok(new ConexaoServidorDTO());
     }
-
-
-
 }

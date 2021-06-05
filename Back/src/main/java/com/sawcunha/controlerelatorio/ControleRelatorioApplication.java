@@ -1,5 +1,6 @@
 package com.sawcunha.controlerelatorio;
 
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableCaching
+@EnableAdminServer
 public class ControleRelatorioApplication {
 
     public static void main(String[] args) {
